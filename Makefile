@@ -1,6 +1,7 @@
 # Sources
 
-SRCS = main.c
+SRCS = main.c startup_stm32l1xx.c
+SRCS += system_stm32l1xx.c
 S_SRCS = 
 
 # USB
@@ -24,7 +25,7 @@ SIZE=$(BINPATH)arm-none-eabi-size
 
 LINKER_SCRIPT = stm32l151c6_flash.ld
 
-CPU = -mcpu=cortex-m4 -mthumb
+CPU = -mcpu=cortex-m3 -mthumb
 
 CFLAGS  = $(CPU) -c -std=gnu99 -g -O2 -Wall
 LDFLAGS  = $(CPU) -mlittle-endian -mthumb-interwork -nostartfiles -Wl,--gc-sections,-Map=$(OUTPATH)/$(PROJ_NAME).map,--cref --specs=nano.specs
