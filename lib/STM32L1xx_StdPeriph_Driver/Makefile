@@ -49,13 +49,13 @@ SRCS = misc.c \
 	stm32l1xx_spi.c \
 	stm32l1xx_exti.c \
 	stm32l1xx_syscfg.c \
-	# stm32l1xx_flash.c \
 	stm32l1xx_tim.c \
 	stm32l1xx_flash_ramfunc.c \
 	stm32l1xx_usart.c \
 	stm32l1xx_fsmc.c \
 	stm32l1xx_wwdg.c \
-	stm32l1xx_gpio.c
+	stm32l1xx_gpio.c 
+	# stm32l1xx_flash.c \
 
 
 OBJS = $(SRCS:.c=.o)
