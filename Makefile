@@ -45,15 +45,15 @@ vpath %.a lib
 INCLUDE_PATHS = -I$(BASEDIR) -I$(BASEDIR)/lib/CMSIS/Include -I$(BASEDIR)/lib/CMSIS/Device/ST/STM32L1xx/Include
 
 # Library paths
-LIBPATHS = -L$(BASEDIR)/lib/STM32F4xx_StdPeriph_Driver
+LIBPATHS = -L$(BASEDIR)/lib/STM32L1xx_StdPeriph_Driver/
 # LIBPATHS += -L$(BASEDIR)/lib/STM32_USB_Device_Library/Core -L$(BASEDIR)/lib/STM32_USB_OTG_Driver
 
 # Libraries to link
 LIBS = -lstdperiph -lc -lgcc -lnosys
-LIBS += -lusbdevcore -lusbcore
+# LIBS += -lusbdevcore -lusbcore
 
 # Extra includes
-INCLUDE_PATHS += -I$(BASEDIR)/lib/STM32F4xx_StdPeriph_Driver/inc
+INCLUDE_PATHS += -I$(BASEDIR)/lib/STM32L1xx_StdPeriph_Driver/inc
 # INCLUDE_PATHS += -I$(BASEDIR)/lib/STM32_USB_OTG_Driver/inc
 # INCLUDE_PATHS += -I$(BASEDIR)/lib/STM32_USB_Device_Library/Core/inc
 
