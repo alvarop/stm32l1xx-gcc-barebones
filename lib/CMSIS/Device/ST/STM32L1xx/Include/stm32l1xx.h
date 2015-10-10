@@ -6338,6 +6338,8 @@ typedef struct
 }
 #endif
 
+#define assert_param(expr) ((void)0)
+
 #endif /* __STM32L1XX_H */
 
 /**
