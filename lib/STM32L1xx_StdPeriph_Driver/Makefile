@@ -49,7 +49,7 @@ SRCS = misc.c \
 	stm32l1xx_spi.c \
 	stm32l1xx_exti.c \
 	stm32l1xx_syscfg.c \
-	stm32l1xx_flash.c \
+	# stm32l1xx_flash.c \
 	stm32l1xx_tim.c \
 	stm32l1xx_flash_ramfunc.c \
 	stm32l1xx_usart.c \
