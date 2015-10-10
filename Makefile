@@ -22,7 +22,7 @@ OBJCOPY=$(BINPATH)arm-none-eabi-objcopy
 OBJDUMP=$(BINPATH)arm-none-eabi-objdump
 SIZE=$(BINPATH)arm-none-eabi-size
 
-LINKER_SCRIPT = stm32_flash.ld
+LINKER_SCRIPT = stm32l151c6_flash.ld
 
 CPU = -mcpu=cortex-m4 -mthumb
 
