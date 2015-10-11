@@ -17,7 +17,7 @@ void init() {
 	}
 
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
-	GPIO_Init(GPIOA, &(GPIO_InitTypeDef){GPIO_Pin_15, GPIO_Mode_OUT, GPIO_OType_PP, GPIO_Speed_2MHz, GPIO_PuPd_NOPULL});
+	GPIO_Init(GPIOA, &(GPIO_InitTypeDef){GPIO_Pin_15, GPIO_Mode_OUT, GPIO_Speed_40MHz, GPIO_OType_PP, GPIO_PuPd_NOPULL});
 }
 
 int main(void) {
