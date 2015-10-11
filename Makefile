@@ -1,7 +1,7 @@
 # Sources
 
 SRCS = main.c startup_stm32l1xx.c
-SRCS += system_stm32l1xx.c
+SRCS += system_stm32l1xx.c stm32_it.c
 S_SRCS = 
 
 # USB

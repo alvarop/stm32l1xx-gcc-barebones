@@ -10,11 +10,6 @@
 volatile uint32_t tickMs = 0;
 
 void init() {
-	Set_System();
-	Set_USBClock();
-	USB_Interrupts_Config();
-	USB_Init();
-
 	// ---------- SysTick timer -------- //
 	if (SysTick_Config(SystemCoreClock / 1000)) {
 		// Capture error
@@ -23,6 +18,11 @@ void init() {
 
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 	GPIO_Init(GPIOA, &(GPIO_InitTypeDef){GPIO_Pin_15, GPIO_Mode_OUT, GPIO_Speed_40MHz, GPIO_OType_PP, GPIO_PuPd_NOPULL});
+
+	Set_System();
+	Set_USBClock();
+	USB_Interrupts_Config();
+	USB_Init();
 }
 
 int main(void) {
