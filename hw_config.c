@@ -289,37 +289,6 @@ void USB_Cable_Config (FunctionalState NewState)
 }
 
 /*******************************************************************************
-* Function Name  :  USART_Config_Default.
-* Description    :  configure the EVAL_COM1 with default values.
-* Input          :  None.
-* Return         :  None.
-*******************************************************************************/
-void USART_Config_Default(void)
-{
-  /* EVAL_COM1 default configuration */
-  /* EVAL_COM1 configured as follow:
-        - BaudRate = 9600 baud  
-        - Word Length = 8 Bits
-        - One Stop Bit
-        - Parity Odd
-        - Hardware flow control disabled
-        - Receive and transmit enabled
-  */
-  USART_InitStructure.USART_BaudRate = 9600;
-  USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-  USART_InitStructure.USART_StopBits = USART_StopBits_1;
-  USART_InitStructure.USART_Parity = USART_Parity_Odd;
-  USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-  USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-
-  /* Configure and enable the USART */
-  STM_EVAL_COMInit(&USART_InitStructure);
-
-  /* Enable the USART Receive interrupt */
-  USART_ITConfig(EVAL_COM1, USART_IT_RXNE, ENABLE);
-}
-
-/*******************************************************************************
 * Function Name  :  USART_Config.
 * Description    :  Configure the EVAL_COM1 according to the line coding structure.
 * Input          :  None.
@@ -329,77 +298,6 @@ void USART_Config_Default(void)
 *******************************************************************************/
 bool USART_Config(void)
 {
-
-  /* set the Stop bit*/
-  switch (linecoding.format)
-  {
-    case 0:
-      USART_InitStructure.USART_StopBits = USART_StopBits_1;
-      break;
-    case 1:
-      USART_InitStructure.USART_StopBits = USART_StopBits_1_5;
-      break;
-    case 2:
-      USART_InitStructure.USART_StopBits = USART_StopBits_2;
-      break;
-    default :
-    {
-      USART_Config_Default();
-      return (FALSE);
-    }
-  }
-
-  /* set the parity bit*/
-  switch (linecoding.paritytype)
-  {
-    case 0:
-      USART_InitStructure.USART_Parity = USART_Parity_No;
-      break;
-    case 1:
-      USART_InitStructure.USART_Parity = USART_Parity_Even;
-      break;
-    case 2:
-      USART_InitStructure.USART_Parity = USART_Parity_Odd;
-      break;
-    default :
-    {
-      USART_Config_Default();
-      return (FALSE);
-    }
-  }
-
-  /*set the data type : only 8bits and 9bits is supported */
-  switch (linecoding.datatype)
-  {
-    case 0x07:
-      /* With this configuration a parity (Even or Odd) should be set */
-      USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-      break;
-    case 0x08:
-      if (USART_InitStructure.USART_Parity == USART_Parity_No)
-      {
-        USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-      }
-      else 
-      {
-        USART_InitStructure.USART_WordLength = USART_WordLength_9b;
-      }
-      
-      break;
-    default :
-    {
-      USART_Config_Default();
-      return (FALSE);
-    }
-  }
-
-  USART_InitStructure.USART_BaudRate = linecoding.bitrate;
-  USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-  USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
- 
-  /* Configure and enable the USART */
-  STM_EVAL_COMInit(&USART_InitStructure);
-
   return (TRUE);
 }
 

@@ -1,6 +1,6 @@
 # Sources
 
-SRCS = main.c startup_stm32l1xx.c
+SRCS = main.c startup_stm32l1xx.c fifo.c console.c
 SRCS += system_stm32l1xx.c stm32_it.c
 S_SRCS = 
 
